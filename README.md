@@ -1,3 +1,4 @@
+This web development project was made by Team TLE during HackFusion, and we are using Next.js to build it.
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
