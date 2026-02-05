@@ -1,16 +1,30 @@
 import nodemailer from "nodemailer";
+// ⚠️ HACKATHON-ONLY: College network TLS interception workaround
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
+console.log("ENV CHECK:", {
+  user: process.env.EMAIL_USER,
+  pass: process.env.EMAIL_PASS ? "LOADED" : "MISSING",
 });
 
 export async function sendOTPEmail(email: string, otp: string) {
   try {
-    await transporter.sendMail({
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      console.error("Email credentials not configured in environment");
+      return false;
+    }
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+
+    console.log("Attempting to send OTP email to:", email);
+    
+    const result = await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: email,
       subject: "Your Password Reset OTP - SPIT HF",
@@ -25,9 +39,10 @@ export async function sendOTPEmail(email: string, otp: string) {
         </div>
       `,
     });
+    console.log("Email sent successfully with message ID:", result.messageId);
     return true;
-  } catch (err) {
-    console.error("Email send failed:", err);
+  } catch (err: any) {
+    console.error("Email send failed:", err.message || err);
     return false;
   }
 }
