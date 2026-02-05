@@ -10,7 +10,8 @@ export default function Home() {
           <a href="#features" className="hover:text-white">Features</a>
           <a href="#about" className="hover:text-white">About</a>
           <a href="#contact" className="hover:text-white">Contact</a>
-          <a href="#" className="ml-4 rounded-full bg-white/10 px-4 py-2 hover:bg-white/20">Sign up</a>
+          <a href="/login" className="ml-4 px-4 py-2 hover:text-white">Sign in</a>
+          <a href="/signup" className="ml-2 rounded-full bg-white/10 px-4 py-2 hover:bg-white/20">Sign up</a>
         </nav>
       </header>
 
@@ -24,7 +25,7 @@ export default function Home() {
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
-                <a href="/login" className="inline-flex items-center gap-3 bg-cyan-900 text-amber-900 font-semibold px-6 py-3 rounded-lg shadow-lg hover:brightness-95">
+            <a href="/signup" className="inline-flex items-center gap-3 bg-cyan-900 text-amber-900 font-semibold px-6 py-3 rounded-lg shadow-lg hover:brightness-95">
               Get Started
             </a>
             <a href="#features" className="inline-flex items-center gap-3 bg-cyan-900 border border-white/10 px-5 py-3 rounded-lg text-white/90 hover:bg-white/5">
