@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import PixelBlast from "@/components/PixelBlast";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -103,8 +104,32 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#0f172a] to-[#001219] text-white">
-      <div className="w-full max-w-md bg-white/6 rounded-2xl p-8">
+    <div className="min-h-screen relative flex items-center justify-center text-white overflow-hidden bg-gradient-to-b from-[#0f172a] to-[#001219]">
+      {/* PixelBlast Background */}
+      <div className="absolute inset-0 z-0 w-full h-full">
+        <PixelBlast
+          variant="square"
+          pixelSize={3}
+          color="#a3b2f0"
+          patternScale={2}
+          patternDensity={1}
+          pixelSizeJitter={0}
+          enableRipples
+          rippleSpeed={0.4}
+          rippleThickness={0.12}
+          rippleIntensityScale={1.5}
+          liquid={false}
+          liquidStrength={0.12}
+          liquidRadius={1.2}
+          liquidWobbleSpeed={5}
+          speed={0.5}
+          edgeFade={0.25}
+          transparent
+        />
+      </div>
+
+      {/* Login Form Container */}
+      <div className="relative z-10 w-full max-w-md bg-white/6 rounded-2xl p-8 backdrop-blur-sm">
         {!isForgotPassword ? (
           <>
             <h2 className="text-2xl font-bold mb-4 text-center">Sign in</h2>
