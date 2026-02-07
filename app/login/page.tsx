@@ -125,6 +125,8 @@ export default function LoginPage() {
           speed={0.5}
           edgeFade={0.25}
           transparent
+          className=""
+          style={{}}
         />
       </div>
 
